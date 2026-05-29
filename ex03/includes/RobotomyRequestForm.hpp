@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rchaumei <rchaumei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 22:19:19 by rchaumei          #+#    #+#             */
-/*   Updated: 2026/05/29 22:28:20 by rchaumei         ###   ########.fr       */
+/*   Created: 2026/05/29 21:26:39 by rchaumei          #+#    #+#             */
+/*   Updated: 2026/05/29 22:28:23 by rchaumei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
 #include "AForm.hpp"
 
-class ShrubberyCreationForm: public AForm{
+class RobotomyRequestForm: public AForm{
     public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(const std::string& target);
-        ShrubberyCreationForm(const ShrubberyCreationForm& cpy);
-        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& source);
-        ~ShrubberyCreationForm();
+        RobotomyRequestForm();
+        RobotomyRequestForm(const std::string& target);
+        RobotomyRequestForm(const RobotomyRequestForm& cpy);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& source);
+        ~RobotomyRequestForm();
 
         const std::string getTarget() const;
         
         void beExecute() const;
-        static const int gradeToSign = 145;
-        static const int gradeToExec = 137;
+        static const int gradeToSign = 72;
+        static const int gradeToExec = 45;
         
     private:
         std::string _target;
