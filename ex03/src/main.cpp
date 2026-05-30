@@ -6,7 +6,7 @@
 /*   By: rchaumei <rchaumei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 19:50:07 by rchaumei          #+#    #+#             */
-/*   Updated: 2026/05/29 22:52:22 by rchaumei         ###   ########.fr       */
+/*   Updated: 2026/05/30 12:29:24 by rchaumei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,36 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
-void createBureaucrat(const std::string& name, int grade){
+void InternMakingform(Intern& slave, Bureaucrat& boss, std::string const& formToDo, std::string const& target){
+    std::cout<<"\n---Intern Form Creation---"<<std::endl;
+    AForm *form;
     try{
-        Bureaucrat valid(name, grade);
+        form = slave.makeForm(formToDo, target);
+        std::cout<<*form<<std::endl;
+        boss.signForm(*form);
+        boss.executeForm(*form);
+        delete form;
     }
-    catch (Bureaucrat::GradeTooHighException& e){
-        std::cout<<"Exception : "<<e.what()<<std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e){
+    catch(const Intern::InvalidFormName& e){
         std::cout<<"Exception : "<<e.what()<<std::endl;
     }
 }
 
 int main(){
-    std::srand(time(NULL));
-    // AForm a;
-
-    Bureaucrat lower("Will", 140);
-    Bureaucrat middle("John", 50);
-    Bureaucrat president("Mr. Lewis", 6);
+    Bureaucrat boss("Boss Carl", 1);
+    Intern slave;
+    std::string const form1 = "shrubbery creation";
+    std::string const form2 = "robotomy request";
+    std::string const form3 = "presidential pardon";
+    std::string const form4 = "invalid form";
     
-    ShrubberyCreationForm scf;
-    RobotomyRequestForm rrf;
-    PresidentialPardonForm ppf;
+    std::cout<<boss<<std::endl;
+    InternMakingform(slave, boss, form1, "target1");
+    InternMakingform(slave, boss, form2, "target2");
+    InternMakingform(slave, boss, form3, "target3");
+    InternMakingform(slave, boss, form4, "target4");
 
-    std::cout<<lower<<std::endl;
-    std::cout<<middle<<std::endl;
-    std::cout<<president<<std::endl;
-    std::cout<<scf<<std::endl;
-    std::cout<<rrf<<std::endl;
-    std::cout<<ppf<<std::endl;
-    
-    std::cout<<"\n---Shrubbery Test---\n";
-    lower.signForm(scf);
-    lower.executeForm(scf);
-    middle.executeForm(scf);
-
-    std::cout<<"\n---Robotomy Test---\n";
-    lower.signForm(rrf);
-    middle.signForm(rrf);
-    middle.executeForm(rrf);
-    president.executeForm(rrf);
-    
-    std::cout<<"\n---President Test---\n";
-    president.signForm(ppf);
-    president.executeForm(ppf);
-    president.incrementGrade();
-    president.executeForm(ppf);
     return 0;
 }

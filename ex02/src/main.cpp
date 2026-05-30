@@ -6,7 +6,7 @@
 /*   By: rchaumei <rchaumei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 19:50:07 by rchaumei          #+#    #+#             */
-/*   Updated: 2026/05/29 22:52:22 by rchaumei         ###   ########.fr       */
+/*   Updated: 2026/05/30 12:17:22 by rchaumei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-
-void createBureaucrat(const std::string& name, int grade){
-    try{
-        Bureaucrat valid(name, grade);
-    }
-    catch (Bureaucrat::GradeTooHighException& e){
-        std::cout<<"Exception : "<<e.what()<<std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e){
-        std::cout<<"Exception : "<<e.what()<<std::endl;
-    }
-}
 
 int main(){
     std::srand(time(NULL));
