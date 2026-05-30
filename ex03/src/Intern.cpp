@@ -6,7 +6,7 @@
 /*   By: rchaumei <rchaumei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:02:55 by rchaumei          #+#    #+#             */
-/*   Updated: 2026/05/30 12:25:37 by rchaumei         ###   ########.fr       */
+/*   Updated: 2026/05/30 12:32:13 by rchaumei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ AForm* Intern::makeForm(std::string formType, std::string target){
 }
 
 const char *Intern::InvalidFormName::what() const throw(){
-    return "Invalid form name, inter can't create it";
+    return "Invalid form name, intern can't create it";
 }
